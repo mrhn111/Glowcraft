@@ -106,9 +106,19 @@
 <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="process.html">Process</a>
 <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="reviews.html">Reviews</a>
 </nav>
-<button class="bg-[#ff8b9a] text-[#000000] px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm active:scale-95 duration-200 hover:shadow-[0_0_20px_#ff8b9a]">
-                Order Now
-            </button>
+<div class="flex items-center gap-3">
+<a href="customizer.html" class="bg-[#ff8b9a] text-[#000000] px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm active:scale-95 duration-200 hover:shadow-[0_0_20px_#ff8b9a]">
+                    Order Now
+                </a>
+<button id="menu-toggle" class="md:hidden flex items-center justify-center w-10 h-10 text-[#ff8b9a] text-2xl" aria-label="Toggle menu">☰</button>
+</div>
+</div>
+<!-- Mobile nav -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-[#484847]/20 bg-[#0e0e0e]/95 px-6 py-4 flex flex-col gap-4">
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#ff8b9a] border-b-2 border-[#ff8b9a] pb-1 w-fit transition-colors" href="gallery.html">Gallery</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="customizer.html">Customizer</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="process.html">Process</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="reviews.html">Reviews</a>
 </div>
 </header>
 <main class="pt-20">
@@ -126,12 +136,12 @@
                         Hand-crafted neon artistry for the modern rebel. Transform your space with a custom glow that defines your vibe.
                     </p>
 <div class="flex gap-4">
-<button class="bg-primary text-on-primary-fixed px-8 py-4 font-headline font-bold uppercase tracking-tighter text-lg hover:shadow-[0_0_25px_#ff8b9a] transition-all">
+<a href="customizer.html" class="bg-primary text-on-primary-fixed px-8 py-4 font-headline font-bold uppercase tracking-tighter text-lg hover:shadow-[0_0_25px_#ff8b9a] transition-all">
                             Design Your Sign
-                        </button>
-<button class="border border-primary text-primary px-8 py-4 font-headline font-bold uppercase tracking-tighter text-lg hover:bg-primary/10 transition-all">
+                        </a>
+<a href="gallery.html" class="border border-primary text-primary px-8 py-4 font-headline font-bold uppercase tracking-tighter text-lg hover:bg-primary/10 transition-all">
                             View Gallery
-                        </button>
+                        </a>
 </div>
 </div>
 <div class="relative flex justify-center items-center">
@@ -291,9 +301,9 @@
                     Ready to <span class="text-secondary neon-text-pink" style="text-shadow: 0 0 10px #47f4f0, 0 0 20px #2ee5e2;">Glow?</span>
 </h2>
 <div class="flex flex-col items-center gap-6">
-<button class="bg-secondary text-on-secondary-fixed px-12 py-6 font-headline font-black uppercase tracking-tighter text-2xl hover:shadow-[0_0_30px_#47f4f0] transition-all">
+<a href="customizer.html" class="bg-secondary text-on-secondary-fixed px-12 py-6 font-headline font-black uppercase tracking-tighter text-2xl hover:shadow-[0_0_30px_#47f4f0] transition-all">
                         Order Now
-                    </button>
+                    </a>
 <p class="font-label text-on-surface-variant uppercase tracking-[0.3em] text-sm">Hand-crafted in the underground.</p>
 </div>
 </div>
@@ -316,4 +326,11 @@
             </div>
 </div>
 </footer>
+<script>
+  document.getElementById('menu-toggle').addEventListener('click', function() {
+    var menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+    this.textContent = menu.classList.contains('hidden') ? '☰' : '✕';
+  });
+</script>
 </body></html>
