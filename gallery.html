@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gallery — Glowcraft</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-secondary-fixed": "#004342","inverse-on-surface": "#565555","primary-container": "#ff7388","error-container": "#a70138","tertiary-container": "#fbef6a","error-dim": "#d73357","surface-dim": "#0e0e0e","on-error": "#490013","primary-fixed-dim": "#ff5676","tertiary": "#fffae3","on-tertiary-container": "#5f5800","on-secondary-fixed-variant": "#006361","on-primary-fixed": "#000000","tertiary-fixed": "#fbef6a","surface-container-high": "#201f1f","primary-fixed": "#ff7388","tertiary-dim": "#ece05e","inverse-surface": "#fcf9f8","surface-container": "#1a1919","on-primary-container": "#4d0015","inverse-primary": "#bf0041","primary-dim": "#e51152","surface-bright": "#2c2c2c","on-primary": "#63001e","on-error-container": "#ffb2b9","secondary-container": "#006a68","surface-tint": "#ff8b9a","on-primary-fixed-variant": "#5f001c","on-tertiary-fixed-variant": "#6a6300","on-surface-variant": "#adaaaa","primary": "#ff8b9a","secondary-fixed": "#47f4f0","on-tertiary": "#686100","secondary": "#47f4f0","on-secondary": "#005857","surface-variant": "#262626","surface-container-highest": "#262626","on-surface": "#ffffff","outline-variant": "#484847","surface": "#0e0e0e","secondary-fixed-dim": "#2ee5e2","on-tertiary-fixed": "#4b4600","surface-container-low": "#131313","secondary-dim": "#2ee5e2","outline": "#767575","tertiary-fixed-dim": "#ece05e","surface-container-lowest": "#000000","on-secondary-container": "#dafffd","on-background": "#ffffff","background": "#0e0e0e","error": "#ff6e84"
+      },
+      fontFamily: { "headline": ["Space Grotesk"], "body": ["Manrope"], "label": ["Space Grotesk"] },
+      borderRadius: {"DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem"},
+    },
+  },
+}
+</script>
+<style>
+.gritty-bg { background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBimntbofBJuWh5-zs1YMti8N-33FVPxxrdPJKla-Y85X8jkbXJy2lyUMFDccudPl88IYzo56fNTEMtPKUJMVWly5ska22oM-Czjnh1Ut8kRtzB-HWH6YsByKTUU0_Od5UuE04oIAiMa5XovGTLUw_BGCZ9eMVaCz-sS2VJ4O1hmmJIwacdYDWn8jq3hGh1J6U-tcgi0pWK2LXkE7WQ1jFLPwPYF5ORtDfEU1Z5iNAdRrllFKqRfps_vmJI1lNOYiQWMgQhueS-wF4); background-repeat: repeat }
+.neon-text-pink { text-shadow: 0 0 5px #ff8b9a, 0 0 10px #ff8b9a, 0 0 20px #e51152 }
+.neon-text-blue { text-shadow: 0 0 5px #47f4f0, 0 0 10px #47f4f0, 0 0 20px #2ee5e2 }
+.neon-glow-pink { box-shadow: 0 0 15px rgba(255,139,154,0.4) }
+.neon-glow-blue { box-shadow: 0 0 15px rgba(71,244,240,0.4) }
+.material-symbols-outlined { font-variation-settings: "FILL" 0,"wght" 400,"GRAD" 0,"opsz" 24 }
+.filter-btn.active { background-color: #ff8b9a; color: #000; }
+.filter-btn { transition: all 0.2s; }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body gritty-bg">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl border-b border-[#484847]/20">
+  <div class="flex justify-between items-center w-full px-6 py-4 max-w-none">
+    <a href="index.html" class="text-2xl font-black tracking-tighter text-[#ff8b9a] drop-shadow-[0_0_8px_rgba(255,139,154,0.5)] font-['Space_Grotesk'] uppercase">Glowcraft</a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#ff8b9a] border-b-2 border-[#ff8b9a] pb-1 transition-colors" href="gallery.html">Gallery</a>
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="customizer.html">Customizer</a>
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="process.html">Process</a>
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="reviews.html">Reviews</a>
+    </nav>
+    <a href="customizer.html" class="bg-[#ff8b9a] text-[#000000] px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm active:scale-95 duration-200 hover:shadow-[0_0_20px_#ff8b9a]">Order Now</a>
+  </div>
+</header>
+
+<main class="pt-20">
+
+  <!-- Page Hero -->
+  <section class="relative py-24 px-6 overflow-hidden border-b border-[#484847]/20">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute top-0 left-1/4 w-[500px] h-[300px] bg-primary/10 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-secondary/10 rounded-full blur-[80px]"></div>
+    </div>
+    <div class="container mx-auto relative z-10">
+      <span class="text-secondary font-label text-sm uppercase tracking-widest border-b border-secondary/30 pb-1 mb-6 inline-block">The Collection</span>
+      <h1 class="text-6xl md:text-8xl font-headline font-black uppercase tracking-tighter leading-[0.9] mt-4">
+        Neon <span class="text-primary neon-text-pink">Gallery</span>
+      </h1>
+      <p class="text-xl text-on-surface-variant max-w-xl mt-6 leading-relaxed">
+        Every sign is hand-crafted, one-of-a-kind. Browse our drops, signature series, and custom builds straight from the underground atelier.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="py-8 px-6 bg-surface-container-low border-b border-[#484847]/20 sticky top-[73px] z-40">
+    <div class="container mx-auto flex flex-wrap gap-3 items-center">
+      <span class="font-label text-on-surface-variant text-xs uppercase tracking-widest mr-2">Filter:</span>
+      <button onclick="filterGallery('all')" class="filter-btn active px-5 py-2 border border-[#484847] font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm" data-filter="all">All</button>
+      <button onclick="filterGallery('text')" class="filter-btn px-5 py-2 border border-[#484847] text-[#adaaaa] font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm hover:border-primary hover:text-primary" data-filter="text">Text Signs</button>
+      <button onclick="filterGallery('icon')" class="filter-btn px-5 py-2 border border-[#484847] text-[#adaaaa] font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm hover:border-primary hover:text-primary" data-filter="icon">Icons &amp; Shapes</button>
+      <button onclick="filterGallery('custom')" class="filter-btn px-5 py-2 border border-[#484847] text-[#adaaaa] font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm hover:border-primary hover:text-primary" data-filter="custom">Custom</button>
+      <button onclick="filterGallery('limited')" class="filter-btn px-5 py-2 border border-[#484847] text-[#adaaaa] font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm hover:border-primary hover:text-primary" data-filter="limited">Limited Drop</button>
+      <div class="ml-auto flex items-center gap-3">
+        <span class="text-on-surface-variant text-xs font-label uppercase tracking-widest">Sort:</span>
+        <select class="bg-surface-container border border-[#484847] text-on-surface font-['Space_Grotesk'] text-sm px-3 py-2 uppercase tracking-tighter focus:border-primary focus:outline-none">
+          <option>Featured</option>
+          <option>Price: Low–High</option>
+          <option>Price: High–Low</option>
+          <option>Newest</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-16 px-6">
+    <div class="container mx-auto">
+      <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Card 1 — text -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px]" data-category="text">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRgSR5lWWL27z1gJWGZ-gevUefISwXAJPKiUoc8F8We13JKvj7yE9jlteVzFkOHS0pb3e286NsEGlDJTczzO3LLWHeQQVifJQ6-_N1tTpC-IlhBN4RVy7dUuAS603sb37br0eCDYx_zbWOoB4rcz4cAl2xXC7D1X3RNCAI-jTMcZD-Rp6mhnYPoyqYNhvSRAll_FFjKnCtsPNlScjeqcwaqoAKiww2Lnqo1qCL9eqsPucgWPLovaAddI3VUzLLfhYUnumc3svN1FE" alt="Glowcraft Script" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-secondary text-on-secondary text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Text Sign</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">Glowcraft Script</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Signature logo sign. Warm white LED. Acrylic clear backing.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">Warm White</span>
+              <span class="text-primary font-headline font-black text-xl">$275</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-0 transition-opacity">
+            <span class="text-primary font-headline font-black text-lg">$275</span>
+          </div>
+          <!-- Static price for non-hover state -->
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">Glowcraft Script</h4>
+              <span class="text-primary font-headline font-black">$275</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 — icon -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px] lg:mt-10" data-category="icon">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnnjBZhoTBTITmmmp8d5OYLw7Qbe6_ASjYIoC-AV-htjAwwWft5m_c57uBc8LJerflnRDyfOppYVDghWYLAqKLQK8NUVnDjkIaS3ZK54KVr66-e26ei8BtfiuYeo32pUD5toY2MJVE2QmaKuEZIXAktxZ8K8etc7CTuNexzwXbfRO6UKBb-2JnHPG6hDkX472qMQazlQfHQMJQoXq35fBHz2mnb9RTtLXn0OIpgv0seMnok6kNyrL51pU4hNj-znIWufb_fE8GsrE" alt="The Bolt" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"/>
+          <div class="absolute top-4 left-4">
+            <span class="bg-secondary text-on-secondary text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Icon</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">The Bolt</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Electric blue lightning bolt. UV-resistant glass. Wall mount included.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">#47F4F0</span>
+              <span class="text-primary font-headline font-black text-xl">$189</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">The Bolt</h4>
+              <span class="text-primary font-headline font-black">$189</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 — limited -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px]" data-category="limited">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxZNg6okVDN8rRhKSvjtrJ8RrmL-K5bYTp7U-B4j4x3azGSvyo1OoAtmpVs_B3BaU1wdU78krCZ-NkSm1uUSASpwGox-c4a52AryI-JuxXm7R-xlGd-4IF5Dw1rrrXMqAmM29X98lA-1509iAZ8JPuViJwVFFkZmWDG0XRwH2yCKbs1gaNoMjhGURuDkNOC8D0VumGbyHm5Jt-AKlIL0SKCDHQnGmIBbkN2IkR6ZeRu2hq8UAste9QQNJeUvarrXgMyFfpsmqsnf0" alt="The Flamingo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"/>
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="bg-primary text-black text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Limited Drop</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">The Flamingo</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Neon pink flamingo. Hand-bent glass. Limited to 12 units.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">#FF8B9A</span>
+              <span class="text-primary font-headline font-black text-xl">$245</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">The Flamingo</h4>
+              <span class="text-primary font-headline font-black">$245</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 — text -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px] lg:-mt-10" data-category="text">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPbBPZTQhb20E_h_k98T8h-vjlAWgg1eweNdjbbTM9Q4iJdRwz9n2w2EwISOL4ladih2eH1sQjoP7KIFqa740b4bHx_1xwN50uzI53Whdq8_TSaGKgnJNQu8KR0dwxGruNs1DdwhyWy68wuGIHZK4ehb5R1lX2FqboX5FGWvqDHX35MlgFvI940Yi7laJlgz4OtB5Bt_lvn_EPQdludxWO0SVoEtiOA3b2OAUkoJ49wrbu74kXKiMhkO7JmSnzAILaoCctfjn4W-g" alt="The Vibe" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"/>
+          <div class="absolute top-4 left-4">
+            <span class="bg-secondary text-on-secondary text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Text Sign</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">The Vibe</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Script "Good Vibes" in warm white. Black acrylic backing.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">#FFFAE3</span>
+              <span class="text-primary font-headline font-black text-xl">$310</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">The Vibe</h4>
+              <span class="text-primary font-headline font-black">$310</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 — custom -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px]" data-category="custom">
+          <div class="w-full h-full bg-gradient-to-br from-[#1a1919] to-[#0e0e0e] flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="text-[#ff8b9a] font-['Space_Grotesk'] font-black text-4xl md:text-5xl leading-tight mb-4" style="text-shadow: 0 0 20px #ff8b9a, 0 0 40px #e51152, 0 0 60px #e51152;">DREAM<br/>BIG</div>
+              <div class="w-16 h-px bg-secondary/50 mx-auto"></div>
+            </div>
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-[#262626] border border-[#484847] text-[#adaaaa] text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Custom</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">Dream Big</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Custom two-line script. Dual-color pink gradient. Customer: @streetstyled.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">Dual Colour</span>
+              <span class="text-primary font-headline font-black text-xl">$395</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">Dream Big</h4>
+              <span class="text-primary font-headline font-black">$395</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 — icon -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px] lg:mt-10" data-category="icon">
+          <div class="w-full h-full bg-gradient-to-br from-[#1a1919] to-[#0e0e0e] flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-[#47f4f0] text-9xl leading-none" style="text-shadow: 0 0 20px #47f4f0, 0 0 60px #2ee5e2; font-family: serif;">♥</div>
+            </div>
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-secondary text-on-secondary text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Icon</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">Heart Glow</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Electric blue heart. Dimmer included. 40cm diameter. Perfect for photo walls.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">#47F4F0</span>
+              <span class="text-primary font-headline font-black text-xl">$155</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">Heart Glow</h4>
+              <span class="text-primary font-headline font-black">$155</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 — limited -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px]" data-category="limited">
+          <div class="w-full h-full bg-gradient-to-br from-[#1a1919] to-[#0e0e0e] flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="font-['Space_Grotesk'] font-black uppercase text-3xl leading-none" style="color: #47f4f0; text-shadow: 0 0 15px #47f4f0, 0 0 40px #2ee5e2;">NO<br/>SLEEP<br/>TILL</div>
+              <div class="font-['Space_Grotesk'] font-black uppercase text-5xl" style="color: #ff8b9a; text-shadow: 0 0 15px #ff8b9a, 0 0 40px #e51152;">DAWN</div>
+            </div>
+          </div>
+          <div class="absolute top-4 left-4 flex gap-2">
+            <span class="bg-primary text-black text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Limited Drop</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">No Sleep Till Dawn</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Dual-colour stacked text. Only 8 made. Sold in original acrylic frame.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">Dual Colour</span>
+              <span class="text-primary font-headline font-black text-xl">$420</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">No Sleep Till Dawn</h4>
+              <span class="text-primary font-headline font-black">$420</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8 — custom -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px] lg:-mt-10" data-category="custom">
+          <div class="w-full h-full bg-gradient-to-br from-[#1a1919] to-[#0e0e0e] flex items-center justify-center">
+            <div class="text-center px-8">
+              <div class="font-['Space_Grotesk'] font-black uppercase text-5xl" style="color: #ff8b9a; text-shadow: 0 0 15px #ff8b9a, 0 0 40px #e51152;">STAY<br/>WEIRD</div>
+            </div>
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-[#262626] border border-[#484847] text-[#adaaaa] text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Custom</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">Stay Weird</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Bold all-caps stacked text. Neon pink. Customer: @weirdstudio.la</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">#FF8B9A</span>
+              <span class="text-primary font-headline font-black text-xl">$285</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">Stay Weird</h4>
+              <span class="text-primary font-headline font-black">$285</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 9 — text -->
+        <div class="gallery-item bg-surface-container-highest group relative overflow-hidden h-[420px]" data-category="text">
+          <div class="w-full h-full bg-gradient-to-br from-[#1a1919] to-[#0e0e0e] flex items-center justify-center">
+            <div class="text-center px-8">
+              <div class="font-['Space_Grotesk'] font-black text-6xl italic" style="color: #fffae3; text-shadow: 0 0 15px #fffae3, 0 0 30px rgba(255,250,227,0.5);">open<br/>24/7</div>
+            </div>
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-secondary text-on-secondary text-xs font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1">Text Sign</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <h4 class="font-headline font-bold uppercase text-xl text-white">Open 24/7</h4>
+            <p class="text-on-surface-variant text-sm mt-1 mb-3">Warm white italic script. Frosted acrylic. Remote dimmer included.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-secondary font-label text-sm">#FFFAE3</span>
+              <span class="text-primary font-headline font-black text-xl">$220</span>
+            </div>
+          </div>
+          <div class="absolute bottom-4 left-0 right-0 px-6 group-hover:opacity-0 transition-opacity duration-300">
+            <div class="flex justify-between items-center bg-surface-container-lowest/80 backdrop-blur-md p-4 border border-outline-variant/20">
+              <h4 class="font-headline font-bold uppercase">Open 24/7</h4>
+              <span class="text-primary font-headline font-black">$220</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No results message -->
+      <div id="no-results" class="hidden py-24 text-center">
+        <span class="material-symbols-outlined text-5xl text-on-surface-variant mb-4 block">search_off</span>
+        <p class="font-headline font-bold uppercase text-xl text-on-surface-variant">No signs in this category yet.</p>
+        <p class="text-on-surface-variant mt-2">Check back on the next drop, or <a href="customizer.html" class="text-primary hover:underline">design your own</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-24 px-6 bg-surface-container-low border-t border-[#484847]/20 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-primary/5 -skew-y-2 scale-110 pointer-events-none"></div>
+    <div class="relative z-10 container mx-auto">
+      <h2 class="text-5xl md:text-7xl font-headline font-black uppercase tracking-tighter mb-6">
+        Don't see your <span class="text-primary neon-text-pink">vibe?</span>
+      </h2>
+      <p class="text-on-surface-variant text-lg mb-10 max-w-lg mx-auto">Every sign we've ever built started as a blank slate. Design something totally yours.</p>
+      <a href="customizer.html" class="inline-block bg-primary text-black px-12 py-5 font-headline font-black uppercase tracking-tighter text-xl hover:shadow-[0_0_30px_#ff8b9a] transition-all">
+        Build Your Sign
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-12 px-6 border-t border-[#484847]/20 bg-[#131313]">
+  <div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto">
+    <div class="font-['Space_Grotesk'] font-bold text-[#ff8b9a] uppercase text-2xl">Glowcraft</div>
+    <div class="flex flex-wrap justify-center gap-8 font-['Manrope'] text-sm text-[#adaaaa]">
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Privacy Policy</a>
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Terms of Service</a>
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Shipping</a>
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Contact</a>
+    </div>
+    <div class="font-['Manrope'] text-sm text-[#adaaaa]">© 2024 Glowcraft. Light up the night.</div>
+  </div>
+</footer>
+
+<script>
+function filterGallery(category) {
+  const items = document.querySelectorAll('.gallery-item');
+  const buttons = document.querySelectorAll('.filter-btn');
+  let visibleCount = 0;
+
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+    btn.classList.add('text-[#adaaaa]');
+    if (btn.dataset.filter === category) {
+      btn.classList.add('active');
+      btn.classList.remove('text-[#adaaaa]');
+    }
+  });
+
+  items.forEach(item => {
+    if (category === 'all' || item.dataset.category === category) {
+      item.style.display = '';
+      visibleCount++;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  document.getElementById('no-results').classList.toggle('hidden', visibleCount > 0);
+}
+</script>
+</body>
+</html>

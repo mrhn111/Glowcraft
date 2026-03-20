@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customizer — Glowcraft</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-secondary-fixed": "#004342","inverse-on-surface": "#565555","primary-container": "#ff7388","error-container": "#a70138","tertiary-container": "#fbef6a","error-dim": "#d73357","surface-dim": "#0e0e0e","on-error": "#490013","primary-fixed-dim": "#ff5676","tertiary": "#fffae3","on-tertiary-container": "#5f5800","on-secondary-fixed-variant": "#006361","on-primary-fixed": "#000000","tertiary-fixed": "#fbef6a","surface-container-high": "#201f1f","primary-fixed": "#ff7388","tertiary-dim": "#ece05e","inverse-surface": "#fcf9f8","surface-container": "#1a1919","on-primary-container": "#4d0015","inverse-primary": "#bf0041","primary-dim": "#e51152","surface-bright": "#2c2c2c","on-primary": "#63001e","on-error-container": "#ffb2b9","secondary-container": "#006a68","surface-tint": "#ff8b9a","on-primary-fixed-variant": "#5f001c","on-tertiary-fixed-variant": "#6a6300","on-surface-variant": "#adaaaa","primary": "#ff8b9a","secondary-fixed": "#47f4f0","on-tertiary": "#686100","secondary": "#47f4f0","on-secondary": "#005857","surface-variant": "#262626","surface-container-highest": "#262626","on-surface": "#ffffff","outline-variant": "#484847","surface": "#0e0e0e","secondary-fixed-dim": "#2ee5e2","on-tertiary-fixed": "#4b4600","surface-container-low": "#131313","secondary-dim": "#2ee5e2","outline": "#767575","tertiary-fixed-dim": "#ece05e","surface-container-lowest": "#000000","on-secondary-container": "#dafffd","on-background": "#ffffff","background": "#0e0e0e","error": "#ff6e84"
+      },
+      fontFamily: { "headline": ["Space Grotesk"], "body": ["Manrope"], "label": ["Space Grotesk"] },
+      borderRadius: {"DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem"},
+    },
+  },
+}
+</script>
+<style>
+.gritty-bg { background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBimntbofBJuWh5-zs1YMti8N-33FVPxxrdPJKla-Y85X8jkbXJy2lyUMFDccudPl88IYzo56fNTEMtPKUJMVWly5ska22oM-Czjnh1Ut8kRtzB-HWH6YsByKTUU0_Od5UuE04oIAiMa5XovGTLUw_BGCZ9eMVaCz-sS2VJ4O1hmmJIwacdYDWn8jq3hGh1J6U-tcgi0pWK2LXkE7WQ1jFLPwPYF5ORtDfEU1Z5iNAdRrllFKqRfps_vmJI1lNOYiQWMgQhueS-wF4); background-repeat: repeat }
+.neon-text-pink { text-shadow: 0 0 5px #ff8b9a, 0 0 10px #ff8b9a, 0 0 20px #e51152 }
+.neon-text-blue { text-shadow: 0 0 5px #47f4f0, 0 0 10px #47f4f0, 0 0 20px #2ee5e2 }
+.neon-text-white { text-shadow: 0 0 10px #fffae3, 0 0 20px rgba(255,250,227,0.6) }
+.neon-text-yellow { text-shadow: 0 0 5px #fbef6a, 0 0 10px #fbef6a, 0 0 20px rgba(251,239,106,0.6) }
+.material-symbols-outlined { font-variation-settings: "FILL" 0,"wght" 400,"GRAD" 0,"opsz" 24 }
+.option-btn { transition: all 0.2s; cursor: pointer; }
+.option-btn.selected { border-color: #ff8b9a !important; color: #ff8b9a; background-color: rgba(255,139,154,0.08); }
+.color-swatch { width: 36px; height: 36px; border-radius: 2px; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; }
+.color-swatch.selected { border-color: white; transform: scale(1.15); box-shadow: 0 0 12px currentColor; }
+input[type=range] { -webkit-appearance: none; appearance: none; height: 3px; background: #484847; outline: none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: #ff8b9a; cursor: pointer; border-radius: 1px; box-shadow: 0 0 8px rgba(255,139,154,0.5); }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body gritty-bg">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl border-b border-[#484847]/20">
+  <div class="flex justify-between items-center w-full px-6 py-4 max-w-none">
+    <a href="index.html" class="text-2xl font-black tracking-tighter text-[#ff8b9a] drop-shadow-[0_0_8px_rgba(255,139,154,0.5)] font-['Space_Grotesk'] uppercase">Glowcraft</a>
+    <nav class="hidden md:flex gap-8 items-center">
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="gallery.html">Gallery</a>
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#ff8b9a] border-b-2 border-[#ff8b9a] pb-1 transition-colors" href="customizer.html">Customizer</a>
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="process.html">Process</a>
+      <a class="font-['Space_Grotesk'] uppercase tracking-tighter font-bold text-[#adaaaa] hover:text-[#ff8b9a] transition-colors" href="reviews.html">Reviews</a>
+    </nav>
+    <button onclick="submitOrder()" class="bg-[#ff8b9a] text-[#000000] px-6 py-2 font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-sm active:scale-95 duration-200 hover:shadow-[0_0_20px_#ff8b9a]">Order Now</button>
+  </div>
+</header>
+
+<main class="pt-20">
+
+  <!-- Page Header -->
+  <section class="py-16 px-6 border-b border-[#484847]/20 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[400px] h-[300px] bg-secondary/10 rounded-full blur-[80px]"></div>
+    </div>
+    <div class="container mx-auto relative z-10">
+      <span class="text-secondary font-label text-sm uppercase tracking-widest border-b border-secondary/30 pb-1 mb-6 inline-block">Design Studio</span>
+      <h1 class="text-6xl md:text-8xl font-headline font-black uppercase tracking-tighter leading-[0.9] mt-4">
+        Build Your <span class="text-secondary neon-text-blue">Sign</span>
+      </h1>
+      <p class="text-xl text-on-surface-variant max-w-xl mt-6 leading-relaxed">
+        Type your text, pick your glow, choose your size. We'll handle the rest — hand-soldered, hand-delivered.
+      </p>
+    </div>
+  </section>
+
+  <!-- Customizer Layout -->
+  <section class="py-12 px-6">
+    <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Left: Controls -->
+      <div class="space-y-8">
+
+        <!-- Step 1: Text -->
+        <div class="bg-surface-container p-8 border-l-2 border-primary">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 bg-primary text-black font-headline font-black flex items-center justify-center text-sm">1</span>
+            <h3 class="font-headline font-bold uppercase text-xl">Your Text</h3>
+          </div>
+          <textarea id="sign-text" oninput="updatePreview()" placeholder="Type your sign text…" rows="2"
+            class="w-full bg-surface-container-high border border-[#484847] text-on-surface font-['Space_Grotesk'] font-bold text-xl px-5 py-4 placeholder:text-[#484847] focus:border-primary focus:outline-none resize-none uppercase tracking-tighter"
+            maxlength="40">GLOW UP</textarea>
+          <div class="flex justify-between mt-2">
+            <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">Max 40 characters</span>
+            <span id="char-count" class="text-xs text-on-surface-variant font-label">7 / 40</span>
+          </div>
+        </div>
+
+        <!-- Step 2: Font -->
+        <div class="bg-surface-container p-8 border-l-2 border-secondary">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 bg-secondary text-[#004342] font-headline font-black flex items-center justify-center text-sm">2</span>
+            <h3 class="font-headline font-bold uppercase text-xl">Font Style</h3>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="selectFont('script')" class="option-btn selected border border-[#484847] p-4 text-center group" data-font="script">
+              <div class="font-['Space_Grotesk'] italic text-2xl text-on-surface mb-1">Abc</div>
+              <span class="text-xs text-on-surface-variant uppercase tracking-widest font-label">Script</span>
+            </button>
+            <button onclick="selectFont('bold')" class="option-btn border border-[#484847] p-4 text-center group" data-font="bold">
+              <div class="font-['Space_Grotesk'] font-black text-2xl text-on-surface mb-1">ABC</div>
+              <span class="text-xs text-on-surface-variant uppercase tracking-widest font-label">Bold</span>
+            </button>
+            <button onclick="selectFont('sans')" class="option-btn border border-[#484847] p-4 text-center group" data-font="sans">
+              <div class="font-['Manrope'] text-2xl text-on-surface mb-1">Abc</div>
+              <span class="text-xs text-on-surface-variant uppercase tracking-widest font-label">Sans</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Colour -->
+        <div class="bg-surface-container p-8 border-l-2 border-primary">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 bg-primary text-black font-headline font-black flex items-center justify-center text-sm">3</span>
+            <h3 class="font-headline font-bold uppercase text-xl">Neon Colour</h3>
+          </div>
+          <div class="flex flex-wrap gap-4 mb-4">
+            <div onclick="selectColor('pink')" class="color-swatch selected" style="background:#ff8b9a; box-shadow: 0 0 10px rgba(255,139,154,0.6);" title="Neon Pink" data-color="pink"></div>
+            <div onclick="selectColor('blue')" class="color-swatch" style="background:#47f4f0;" title="Electric Blue" data-color="blue"></div>
+            <div onclick="selectColor('white')" class="color-swatch" style="background:#fffae3; border-color: #484847;" title="Warm White" data-color="white"></div>
+            <div onclick="selectColor('yellow')" class="color-swatch" style="background:#fbef6a;" title="Neon Yellow" data-color="yellow"></div>
+            <div onclick="selectColor('purple')" class="color-swatch" style="background:#c084fc;" title="Ultraviolet" data-color="purple"></div>
+            <div onclick="selectColor('orange')" class="color-swatch" style="background:#fb923c;" title="Neon Orange" data-color="orange"></div>
+          </div>
+          <div id="color-label" class="text-sm font-label uppercase tracking-widest text-primary">Neon Pink — #FF8B9A</div>
+        </div>
+
+        <!-- Step 4: Size -->
+        <div class="bg-surface-container p-8 border-l-2 border-secondary">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 bg-secondary text-[#004342] font-headline font-black flex items-center justify-center text-sm">4</span>
+            <h3 class="font-headline font-bold uppercase text-xl">Size</h3>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mb-4">
+            <button onclick="selectSize('S', 0)" class="option-btn border border-[#484847] p-4 text-center" data-size="S">
+              <div class="font-headline font-black text-2xl text-on-surface mb-1">S</div>
+              <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">30cm</span>
+            </button>
+            <button onclick="selectSize('M', 80)" class="option-btn selected border border-[#484847] p-4 text-center" data-size="M">
+              <div class="font-headline font-black text-2xl text-on-surface mb-1">M</div>
+              <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">50cm</span>
+            </button>
+            <button onclick="selectSize('L', 160)" class="option-btn border border-[#484847] p-4 text-center" data-size="L">
+              <div class="font-headline font-black text-2xl text-on-surface mb-1">L</div>
+              <span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">80cm</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 5: Backing -->
+        <div class="bg-surface-container p-8 border-l-2 border-primary">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 bg-primary text-black font-headline font-black flex items-center justify-center text-sm">5</span>
+            <h3 class="font-headline font-bold uppercase text-xl">Backing</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="selectBacking('clear')" class="option-btn selected border border-[#484847] p-4 text-left" data-backing="clear">
+              <span class="material-symbols-outlined text-secondary text-2xl mb-2 block" style="font-variation-settings:'FILL' 1;">transparency</span>
+              <div class="font-headline font-bold uppercase text-sm mb-1">Clear Acrylic</div>
+              <span class="text-xs text-on-surface-variant font-label">Minimal. Clean look.</span>
+            </button>
+            <button onclick="selectBacking('black')" class="option-btn border border-[#484847] p-4 text-left" data-backing="black">
+              <span class="material-symbols-outlined text-secondary text-2xl mb-2 block" style="font-variation-settings:'FILL' 1;">square</span>
+              <div class="font-headline font-bold uppercase text-sm mb-1">Black Acrylic</div>
+              <span class="text-xs text-on-surface-variant font-label">Dramatic contrast.</span>
+            </button>
+            <button onclick="selectBacking('wood')" class="option-btn border border-[#484847] p-4 text-left" data-backing="wood">
+              <span class="material-symbols-outlined text-secondary text-2xl mb-2 block" style="font-variation-settings:'FILL' 1;">texture</span>
+              <div class="font-headline font-bold uppercase text-sm mb-1">Raw Wood</div>
+              <span class="text-xs text-on-surface-variant font-label">Organic warmth.</span>
+            </button>
+            <button onclick="selectBacking('none')" class="option-btn border border-[#484847] p-4 text-left" data-backing="none">
+              <span class="material-symbols-outlined text-secondary text-2xl mb-2 block" style="font-variation-settings:'FILL' 1;">blur_on</span>
+              <div class="font-headline font-bold uppercase text-sm mb-1">No Backing</div>
+              <span class="text-xs text-on-surface-variant font-label">Wire-only floating.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Extras -->
+        <div class="bg-surface-container p-8 border-l-2 border-secondary">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 bg-secondary text-[#004342] font-headline font-black flex items-center justify-center text-sm">6</span>
+            <h3 class="font-headline font-bold uppercase text-xl">Extras</h3>
+          </div>
+          <div class="space-y-4">
+            <label class="flex items-center justify-between cursor-pointer group">
+              <div>
+                <div class="font-headline font-bold uppercase text-sm">Remote Dimmer</div>
+                <div class="text-xs text-on-surface-variant font-label mt-0.5">Adjust brightness wirelessly. +$29</div>
+              </div>
+              <input type="checkbox" id="extra-dimmer" onchange="updatePrice()" class="w-5 h-5 border-[#484847] bg-surface-container text-primary focus:ring-primary focus:ring-offset-0"/>
+            </label>
+            <div class="border-t border-[#484847]/30"></div>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <div>
+                <div class="font-headline font-bold uppercase text-sm">USB Power Adapter</div>
+                <div class="text-xs text-on-surface-variant font-label mt-0.5">Universal voltage adapter. +$15</div>
+              </div>
+              <input type="checkbox" id="extra-adapter" onchange="updatePrice()" class="w-5 h-5 border-[#484847] bg-surface-container text-primary focus:ring-primary focus:ring-offset-0"/>
+            </label>
+            <div class="border-t border-[#484847]/30"></div>
+            <label class="flex items-center justify-between cursor-pointer group">
+              <div>
+                <div class="font-headline font-bold uppercase text-sm">Rush Production</div>
+                <div class="text-xs text-on-surface-variant font-label mt-0.5">Ships in 5 days instead of 14. +$49</div>
+              </div>
+              <input type="checkbox" id="extra-rush" onchange="updatePrice()" class="w-5 h-5 border-[#484847] bg-surface-container text-primary focus:ring-primary focus:ring-offset-0"/>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Preview + Summary -->
+      <div class="lg:sticky lg:top-24 space-y-6">
+
+        <!-- Live Preview -->
+        <div class="bg-surface-container-lowest border border-[#484847]/40 overflow-hidden">
+          <div class="px-6 py-4 border-b border-[#484847]/20 flex items-center justify-between">
+            <span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Live Preview</span>
+            <span class="flex items-center gap-1.5 text-xs text-secondary font-label uppercase tracking-widest">
+              <span class="w-2 h-2 bg-secondary rounded-full animate-pulse inline-block"></span>Live
+            </span>
+          </div>
+          <div id="preview-area" class="min-h-[280px] flex items-center justify-center p-12 relative overflow-hidden" style="background: #050505;">
+            <div class="absolute inset-0 pointer-events-none" id="preview-glow" style="background: radial-gradient(ellipse at center, rgba(255,139,154,0.15) 0%, transparent 70%);"></div>
+            <div id="preview-text" class="font-['Space_Grotesk'] font-black uppercase text-5xl md:text-6xl text-center leading-tight relative z-10 transition-all duration-300 italic" style="color: #ff8b9a; text-shadow: 0 0 10px #ff8b9a, 0 0 25px #ff8b9a, 0 0 50px #e51152;">GLOW UP</div>
+          </div>
+          <div class="px-6 py-3 border-t border-[#484847]/20 flex items-center gap-2">
+            <span class="material-symbols-outlined text-on-surface-variant text-sm" style="font-variation-settings:'FILL' 0;">info</span>
+            <span class="text-xs text-on-surface-variant font-label">Preview is approximate. Final sign may vary slightly.</span>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="bg-surface-container border border-[#484847]/40">
+          <div class="px-6 py-4 border-b border-[#484847]/20">
+            <h3 class="font-headline font-bold uppercase text-lg">Order Summary</h3>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex justify-between text-sm">
+              <span class="text-on-surface-variant font-label uppercase tracking-widest">Base Sign (M)</span>
+              <span class="font-headline font-bold" id="summary-base">$199</span>
+            </div>
+            <div id="summary-dimmer-row" class="hidden flex justify-between text-sm">
+              <span class="text-on-surface-variant font-label uppercase tracking-widest">Remote Dimmer</span>
+              <span class="font-headline font-bold">+$29</span>
+            </div>
+            <div id="summary-adapter-row" class="hidden flex justify-between text-sm">
+              <span class="text-on-surface-variant font-label uppercase tracking-widest">USB Adapter</span>
+              <span class="font-headline font-bold">+$15</span>
+            </div>
+            <div id="summary-rush-row" class="hidden flex justify-between text-sm">
+              <span class="text-on-surface-variant font-label uppercase tracking-widest">Rush Production</span>
+              <span class="font-headline font-bold">+$49</span>
+            </div>
+            <div class="border-t border-[#484847]/30 pt-3 flex justify-between items-center">
+              <span class="font-headline font-bold uppercase">Total</span>
+              <span class="text-primary font-headline font-black text-2xl neon-text-pink" id="summary-total">$199</span>
+            </div>
+            <p class="text-xs text-on-surface-variant font-label pt-1">Shipping calculated at checkout. Est. 10–14 days production.</p>
+          </div>
+          <div class="px-6 pb-6">
+            <button onclick="submitOrder()" class="w-full bg-primary text-black py-5 font-headline font-black uppercase tracking-tighter text-xl hover:shadow-[0_0_30px_#ff8b9a] transition-all active:scale-95">
+              Place Order
+            </button>
+            <div class="flex items-center justify-center gap-6 mt-4">
+              <div class="flex items-center gap-1.5 text-xs text-on-surface-variant font-label">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">verified</span>
+                Hand-crafted
+              </div>
+              <div class="flex items-center gap-1.5 text-xs text-on-surface-variant font-label">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">local_shipping</span>
+                Free shipping $200+
+              </div>
+              <div class="flex items-center gap-1.5 text-xs text-on-surface-variant font-label">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">replay</span>
+                30-day returns
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Production Timeline -->
+        <div class="bg-surface-container-low border border-[#484847]/20 p-6">
+          <h4 class="font-headline font-bold uppercase text-sm mb-4 text-on-surface-variant">Production Timeline</h4>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+              <span class="text-sm font-label">Day 1–2: Design review &amp; approval</span>
+            </div>
+            <div class="w-px h-4 bg-[#484847]/40 ml-[3px]"></div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-secondary rounded-full flex-shrink-0"></div>
+              <span class="text-sm font-label">Day 3–10: Hand-bending &amp; soldering</span>
+            </div>
+            <div class="w-px h-4 bg-[#484847]/40 ml-[3px]"></div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+              <span class="text-sm font-label">Day 11–14: Quality check &amp; shipping</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-12 px-6 border-t border-[#484847]/20 bg-[#131313]">
+  <div class="flex flex-col md:flex-row justify-between items-center gap-8 w-full max-w-7xl mx-auto">
+    <div class="font-['Space_Grotesk'] font-bold text-[#ff8b9a] uppercase text-2xl">Glowcraft</div>
+    <div class="flex flex-wrap justify-center gap-8 font-['Manrope'] text-sm text-[#adaaaa]">
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Privacy Policy</a>
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Terms of Service</a>
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Shipping</a>
+      <a class="hover:text-[#ff8b9a] transition-all" href="#">Contact</a>
+    </div>
+    <div class="font-['Manrope'] text-sm text-[#adaaaa]">© 2024 Glowcraft. Light up the night.</div>
+  </div>
+</footer>
+
+<script>
+const colorMap = {
+  pink:   { hex: '#ff8b9a', glow: '#e51152', label: 'Neon Pink — #FF8B9A', cssClass: 'neon-text-pink' },
+  blue:   { hex: '#47f4f0', glow: '#2ee5e2', label: 'Electric Blue — #47F4F0', cssClass: 'neon-text-blue' },
+  white:  { hex: '#fffae3', glow: 'rgba(255,250,227,0.5)', label: 'Warm White — #FFFAE3', cssClass: 'neon-text-white' },
+  yellow: { hex: '#fbef6a', glow: 'rgba(251,239,106,0.5)', label: 'Neon Yellow — #FBEF6A', cssClass: 'neon-text-yellow' },
+  purple: { hex: '#c084fc', glow: 'rgba(192,132,252,0.5)', label: 'Ultraviolet — #C084FC', cssClass: '' },
+  orange: { hex: '#fb923c', glow: 'rgba(251,146,60,0.5)', label: 'Neon Orange — #FB923C', cssClass: '' },
+};
+
+const fontMap = {
+  script: { family: "'Space Grotesk', sans-serif", style: 'italic', weight: '900' },
+  bold:   { family: "'Space Grotesk', sans-serif", style: 'normal', weight: '900' },
+  sans:   { family: "'Manrope', sans-serif", style: 'normal', weight: '600' },
+};
+
+const sizeBasePrice = { S: 149, M: 199, L: 299 };
+
+let state = {
+  color: 'pink',
+  font: 'script',
+  size: 'M',
+  sizeAddon: 0,
+  backing: 'clear',
+};
+
+function updatePreview() {
+  const text = document.getElementById('sign-text').value || 'GLOW UP';
+  const charCount = document.getElementById('char-count');
+  charCount.textContent = `${document.getElementById('sign-text').value.length} / 40`;
+
+  const c = colorMap[state.color];
+  const f = fontMap[state.font];
+  const previewText = document.getElementById('preview-text');
+  const previewGlow = document.getElementById('preview-glow');
+
+  previewText.textContent = text;
+  previewText.style.color = c.hex;
+  previewText.style.textShadow = `0 0 10px ${c.hex}, 0 0 25px ${c.hex}, 0 0 60px ${c.glow}`;
+  previewText.style.fontFamily = f.family;
+  previewText.style.fontStyle = f.style;
+  previewText.style.fontWeight = f.weight;
+  previewGlow.style.background = `radial-gradient(ellipse at center, ${c.hex}22 0%, transparent 70%)`;
+}
+
+function selectColor(color) {
+  state.color = color;
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+  document.querySelector(`.color-swatch[data-color="${color}"]`).classList.add('selected');
+  document.getElementById('color-label').textContent = colorMap[color].label;
+  document.getElementById('color-label').style.color = colorMap[color].hex;
+  updatePreview();
+}
+
+function selectFont(font) {
+  state.font = font;
+  document.querySelectorAll('[data-font]').forEach(b => b.classList.remove('selected'));
+  document.querySelector(`[data-font="${font}"]`).classList.add('selected');
+  updatePreview();
+}
+
+function selectSize(size, addon) {
+  state.size = size;
+  state.sizeAddon = addon;
+  document.querySelectorAll('[data-size]').forEach(b => b.classList.remove('selected'));
+  document.querySelector(`[data-size="${size}"]`).classList.add('selected');
+  updatePrice();
+}
+
+function selectBacking(backing) {
+  state.backing = backing;
+  document.querySelectorAll('[data-backing]').forEach(b => b.classList.remove('selected'));
+  document.querySelector(`[data-backing="${backing}"]`).classList.add('selected');
+}
+
+function updatePrice() {
+  const base = sizeBasePrice[state.size];
+  let total = base;
+  const dimmer = document.getElementById('extra-dimmer').checked;
+  const adapter = document.getElementById('extra-adapter').checked;
+  const rush = document.getElementById('extra-rush').checked;
+  if (dimmer) total += 29;
+  if (adapter) total += 15;
+  if (rush) total += 49;
+
+  document.getElementById('summary-base').textContent = `$${base}`;
+  document.getElementById('summary-total').textContent = `$${total}`;
+  document.getElementById('summary-dimmer-row').classList.toggle('hidden', !dimmer);
+  document.getElementById('summary-adapter-row').classList.toggle('hidden', !adapter);
+  document.getElementById('summary-rush-row').classList.toggle('hidden', !rush);
+
+  const label = state.size === 'S' ? '30cm' : state.size === 'M' ? '50cm' : '80cm';
+  document.querySelector('#summary-base').closest('div').querySelector('span').textContent = `Base Sign (${state.size} · ${label})`;
+}
+
+function submitOrder() {
+  alert('Thanks for your order! Our team will be in touch within 24 hours to confirm your design.');
+}
+
+// Init
+updatePreview();
+</script>
+</body>
+</html>
